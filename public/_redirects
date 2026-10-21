@@ -1,4 +1,3 @@
-# Old October CMS URLs -> new Astro URLs (Cloudflare Pages / Netlify format)
-/blog                /posts/          301
-/blog/               /posts/          301
-/blog/post/:slug     /posts/:slug/    301
+# Old blog posts stay on the old site (Cloudflare Pages / Netlify format)
+/blog                https://old.alteranlabs.co.uk/blog          301
+/blog/*              https://old.alteranlabs.co.uk/blog/:splat   301
