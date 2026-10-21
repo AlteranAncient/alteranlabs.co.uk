@@ -1,0 +1,69 @@
+---
+import { GISCUS } from "@/comments.config";
+
+const enabled = [
+  GISCUS.repo,
+  GISCUS.repoId,
+  GISCUS.category,
+  GISCUS.categoryId,
+].every(Boolean);
+---
+
+{
+  enabled && (
+    <section id="comments" class="mt-8">
+      <div class="giscus" />
+    </section>
+  )
+}
+
+<script is:inline data-astro-rerun define:vars={{ cfg: GISCUS, enabled }}>
+  (() => {
+    const container = document.querySelector(".giscus");
+    if (!enabled || !container) return;
+
+    const giscusTheme = () =>
+      document.documentElement.dataset.theme === "dark"
+        ? cfg.darkTheme
+        : cfg.lightTheme;
+
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.crossOrigin = "anonymous";
+    const attrs = {
+      repo: cfg.repo,
+      "repo-id": cfg.repoId,
+      category: cfg.category,
+      "category-id": cfg.categoryId,
+      mapping: cfg.mapping,
+      strict: cfg.strict,
+      "reactions-enabled": cfg.reactionsEnabled,
+      "emit-metadata": cfg.emitMetadata,
+      "input-position": cfg.inputPosition,
+      lang: cfg.lang,
+      loading: cfg.loading,
+      theme: giscusTheme(),
+    };
+    for (const [key, value] of Object.entries(attrs)) {
+      script.setAttribute(`data-${key}`, value);
+    }
+    container.appendChild(script);
+
+    // Follow the site's light/dark toggle. Set up once, as the <html>
+    // element survives view-transition navigations.
+    if (window.__giscusThemeObserver) return;
+    window.__giscusThemeObserver = new MutationObserver(() => {
+      document
+        .querySelector("iframe.giscus-frame")
+        ?.contentWindow?.postMessage(
+          { giscus: { setConfig: { theme: giscusTheme() } } },
+          "https://giscus.app"
+        );
+    });
+    window.__giscusThemeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+  })();
+</script>
