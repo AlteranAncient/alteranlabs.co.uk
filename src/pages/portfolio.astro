@@ -1,0 +1,36 @@
+---
+import { getEntry, render } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import config from "@/config";
+
+const portfolio = await getEntry("pages", "portfolio");
+
+if (!portfolio) {
+  throw new Error(
+    "Missing content entry: `portfolio.md` or `portfolio.mdx` in `src/content/pages/`"
+  );
+}
+
+const { Content } = await render(portfolio);
+---
+
+<Layout
+  title={`${portfolio.data.title} | ${config.site.title}`}
+  description={portfolio.data.description}
+  ogImage={portfolio.data.ogImage}
+  canonicalURL={portfolio.data.canonicalURL}
+>
+  <Header />
+
+  <Breadcrumb />
+
+  <Main pageTitle={portfolio.data.title} class="app-prose">
+    <Content />
+  </Main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,4 @@
+# Old October CMS URLs -> new Astro URLs (Cloudflare Pages / Netlify format)
+/blog                /posts/          301
+/blog/               /posts/          301
+/blog/post/:slug     /posts/:slug/    301
