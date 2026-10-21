@@ -32,15 +32,11 @@ Comments use [Giscus](https://giscus.app), which stores them in GitHub Discussio
 
 The comment box follows the site's light and dark toggle.
 
-## Hosting (Cloudflare Pages)
+## Hosting
 
-Create a Pages project connected to this repo with:
+The site is deployed to a DigitalOcean Droplet and served by nginx. The `Deploy` GitHub Actions workflow builds it and copies it over SSH on every push to `main`. It stays switched off until the `DEPLOY_HOST` repository variable is set.
 
-- **Build command:** `pnpm run build`
-- **Build output directory:** `dist`
-- **Environment variable:** `NODE_VERSION` = `22`
-
-`public/_redirects` sends the old October CMS URLs (`/blog/post/...`) to their new homes, so existing links keep working.
+[`deploy/README.md`](deploy/README.md) covers the one-off setup and the cutover, including moving the old site to `old.alteranlabs.co.uk`, plus how to roll back. The nginx config, including redirects from the old `/blog/post/...` URLs, is in [`deploy/nginx-alteranlabs.co.uk.conf`](deploy/nginx-alteranlabs.co.uk.conf). `public/_redirects` has the same redirects in case the site ever moves to Cloudflare Pages or Netlify.
 
 ## Upkeep
 
