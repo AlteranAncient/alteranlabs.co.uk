@@ -1,0 +1,23 @@
+# Compose stack for the Astro site, to live at /opt/stacks/astro/ on the
+# Droplet next to this folder's nginx.conf. See deploy/README.md.
+
+services:
+  site:
+    image: nginx:stable-alpine
+    restart: unless-stopped
+    volumes:
+      - /srv/alteranlabs.co.uk/astro:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - proxy
+    labels:
+      traefik.enable: "true"
+      # Preview host. At cutover this becomes Host(`alteranlabs.co.uk`).
+      traefik.http.routers.astro.rule: Host(`new.alteranlabs.co.uk`)
+      traefik.http.routers.astro.entrypoints: websecure
+      traefik.http.routers.astro.tls.certresolver: le
+      traefik.http.services.astro.loadbalancer.server.port: "80"
+
+networks:
+  proxy:
+    external: true

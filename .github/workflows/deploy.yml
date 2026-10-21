@@ -2,7 +2,7 @@ name: Deploy
 
 # Builds the site and copies it to the DigitalOcean Droplet over SSH.
 # Does nothing until the DEPLOY_HOST repository variable is set.
-# Setup and cutover steps: deploy/README.md
+# Setup and cutover steps: deploy/README.md (Traefik + nginx container)
 
 permissions:
   contents: read
@@ -25,7 +25,7 @@ jobs:
     env:
       DEPLOY_HOST: ${{ vars.DEPLOY_HOST }}
       DEPLOY_USER: ${{ vars.DEPLOY_USER || 'deploy' }}
-      DEPLOY_PATH: ${{ vars.DEPLOY_PATH || '/var/www/alteranlabs.co.uk' }}
+      DEPLOY_PATH: ${{ vars.DEPLOY_PATH || '/srv/alteranlabs.co.uk/astro' }}
       RELEASE: ${{ github.sha }}
 
     steps:
