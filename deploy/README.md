@@ -9,7 +9,7 @@ Internet ──443──▶ traefik ──(proxy)──▶ static-site-1   old s
 ```
 
 - **Build and upload:** the `Deploy` GitHub Actions workflow builds the site and rsyncs it into `/srv/alteranlabs.co.uk/astro/releases/<commit>/`, then points the `current` symlink at it. nginx serves `current` from a read-only bind mount, so deploys need no restart, and the last five releases stay around for rollback.
-- **Serve:** [`compose.yml`](compose.yml) runs a stock `nginx:stable-alpine` container with [`nginx.conf`](nginx.conf), which also redirects the old `/blog/post/...` URLs to the new ones. Traefik labels route traffic to it and get its certificate through the existing `le` resolver.
+- **Serve:** [`compose.yml`](compose.yml) runs a stock `nginx:stable-alpine` container with [`nginx.conf`](nginx.conf), which also sends old `/blog/...` links to the same page on `old.alteranlabs.co.uk`. Traefik labels route traffic to it and get its certificate through the existing `le` resolver.
 
 The plan is to preview the new site on `new.alteranlabs.co.uk`, then swap the router rules so the old site moves to `old.alteranlabs.co.uk` and the new site takes the main domain. Nothing below changes the live site until step 5.
 
@@ -69,7 +69,7 @@ docker compose up -d
 docker compose logs -f   # Ctrl+C once nginx is up
 ```
 
-Open https://new.alteranlabs.co.uk. The first visit may take a few seconds while Traefik gets the certificate. Check a post, a redirect such as `/blog/post/new-dawn`, and the 404 page.
+Open https://new.alteranlabs.co.uk. The first visit may take a few seconds while Traefik gets the certificate. Check a few pages, the 404 page, and that `/blog/post/new-dawn` redirects to the old site.
 
 ## 5. Switch domains
 

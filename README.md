@@ -36,7 +36,7 @@ The comment box follows the site's light and dark toggle.
 
 The site runs on a DigitalOcean Droplet as an nginx container behind Traefik, alongside the old site's stack. The `Deploy` GitHub Actions workflow builds the site and copies it over SSH on every push to `main`. It stays switched off until the `DEPLOY_HOST` repository variable is set.
 
-[`deploy/README.md`](deploy/README.md) covers the one-off setup, previewing on `new.alteranlabs.co.uk`, moving the old site to `old.alteranlabs.co.uk`, and rolling back. The Compose stack and nginx config (including redirects from the old `/blog/post/...` URLs) are in [`deploy/`](deploy/). `public/_redirects` has the same redirects in case the site ever moves to Cloudflare Pages or Netlify.
+[`deploy/README.md`](deploy/README.md) covers the one-off setup, previewing on `new.alteranlabs.co.uk`, moving the old site to `old.alteranlabs.co.uk`, and rolling back. The Compose stack and nginx config (which sends old `/blog/...` links to the old site) are in [`deploy/`](deploy/). `public/_redirects` has the same redirects in case the site ever moves to Cloudflare Pages or Netlify.
 
 ## Upkeep
 

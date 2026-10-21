@@ -11,7 +11,7 @@ Most of these were labours of love rather than paid work, and many of them are p
 
 The website for a My Little Pony convention in Kansas City, Missouri, covering convention news and information. It had a homepage, content pages, a news system and a forum, and a page for every guest announcement.
 
-**Built with:** October CMS (Laravel, PHP) · [View the archived site](https://mwbf.alteranlabs.co.uk) · [Read the look back](/posts/midwest-brony-fest-look-back/)
+**Built with:** October CMS (Laravel, PHP) · [View the archived site](https://mwbf.alteranlabs.co.uk) · [Read the look back](https://old.alteranlabs.co.uk/blog/post/midwest-brony-fest-look-back)
 
 ## Ponyville FM
 
