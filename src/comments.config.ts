@@ -6,15 +6,15 @@
  * in the generated <script> tag as data-repo, data-repo-id and so on.
  */
 export const GISCUS = {
-  repo: "", // e.g. "AlteranAncient/alteranlabs.co.uk"
-  repoId: "",
-  category: "", // e.g. "Comments" (an Announcement-type category is best)
-  categoryId: "",
+  repo: "AlteranAncient/alteranlabs.co.uk",
+  repoId: "R_kgDOVS0Aow",
+  category: "Comments",
+  categoryId: "DIC_kwDOVS0Ao84DJSzw",
   mapping: "pathname",
   strict: "0",
   reactionsEnabled: "1",
   emitMetadata: "0",
-  inputPosition: "top",
+  inputPosition: "bottom",
   lang: "en",
   loading: "lazy",
   lightTheme: "light",
