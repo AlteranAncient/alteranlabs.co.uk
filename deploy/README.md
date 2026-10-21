@@ -1,6 +1,6 @@
 # Deploying to the DigitalOcean Droplet
 
-The site is plain static files. GitHub Actions builds it and copies it to the Droplet over SSH, and nginx serves it. The plan is to move the old October CMS site to `old.alteranlabs.co.uk` first, then point the main domain at the new site.
+The site is plain static files. GitHub Actions builds it and copies it to the Droplet over SSH, and nginx serves it. The plan is to move the old site (a static clone of the October CMS site) to `old.alteranlabs.co.uk` first, then point the main domain at the new site.
 
 These steps assume Ubuntu with nginx and Certbot. Adjust paths if your Droplet differs. Nothing below changes the live site until step 4.
 
@@ -20,8 +20,22 @@ These steps assume Ubuntu with nginx and Certbot. Adjust paths if your Droplet d
    sudo certbot --nginx -d old.alteranlabs.co.uk
    ```
 
-3. **October CMS:** set the app URL to `https://old.alteranlabs.co.uk`. Depending on the version, that's `'url'` in `config/app.php` or `APP_URL` in `.env`. Then clear the cache with `php artisan cache:clear` from the site folder.
-4. Check that https://old.alteranlabs.co.uk works. The main domain is still serving the old site at this point, which is fine.
+3. **Absolute links:** a static clone often keeps full `https://alteranlabs.co.uk/...` links from the original site. Once the main domain switches, those would send visitors to the new site. Check for them from the old site's folder:
+
+   ```sh
+   grep -rl "alteranlabs.co.uk" . | head
+   ```
+
+   If any turn up, back up the folder, then rewrite them to the subdomain:
+
+   ```sh
+   sudo cp -a . ../old-site-backup
+   grep -rlZ "//alteranlabs.co.uk" --include="*.html" --include="*.css" --include="*.js" . \
+     | xargs -0 -r sudo sed -i 's#//alteranlabs\.co\.uk#//old.alteranlabs.co.uk#g'
+   ```
+
+   Run the same for `//www.alteranlabs.co.uk` if the clone uses `www`. Subdomains like `mwbf.alteranlabs.co.uk` aren't matched, so they're left alone.
+4. Check that https://old.alteranlabs.co.uk works and its links stay on the subdomain. The main domain still serves the old site at this point, which is fine.
 
 ## 2. Create a deploy user and folder
 
