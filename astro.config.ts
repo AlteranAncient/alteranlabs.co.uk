@@ -60,11 +60,11 @@ export default defineConfig({
   },
   fonts: [
     {
-      name: "Zilla Slab",
-      cssVariable: "--font-zilla-slab",
+      name: "Aleo",
+      cssVariable: "--font-aleo",
       provider: fontProviders.google(),
       fallbacks: ["serif"],
-      weights: [300, 400, 500, 600, 700],
+      weights: [400, 500, 700],
       styles: ["normal", "italic"],
       formats: ["woff", "ttf"],
     },

@@ -5,6 +5,34 @@
   .app-prose {
     @apply prose;
 
+    /* Reading rhythm for Aleo: slightly open spacing, 1.7 line height */
+    line-height: 1.7;
+    letter-spacing: 0.015em;
+    word-spacing: 0.1em;
+
+    /* Keep text to a comfortable line length; code, tables and images stay wide */
+    > :where(p, ul, ol, blockquote, h1, h2, h3, h4, h5, h6, details) {
+      max-width: 110ch;
+    }
+
+    /* Headings and code read better without the extra spacing */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    code,
+    pre,
+    kbd {
+      letter-spacing: normal;
+      word-spacing: normal;
+    }
+
+    strong {
+      @apply font-bold; /* body is 500, so bold needs a clear step up */
+    }
+
     h1,
     h2,
     h3,

@@ -6,6 +6,12 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @layer base {
+  html {
+    font-size: 106.25%; /* 17px root: Aleo reads comfortably here */
+  }
+  body {
+    @apply font-medium; /* weight 500 holds up better on the dark theme */
+  }
   * {
     @apply border-border outline-accent/75;
     scrollbar-width: auto;

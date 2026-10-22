@@ -27,7 +27,7 @@ export const GET: APIRoute = async ({ props, url }) => {
     return new Response(null, { status: 404, statusText: "Not found" });
   }
 
-  const fonts = fontData["--font-zilla-slab"];
+  const fonts = fontData["--font-aleo"];
   const regularFontPath = getFontPathByWeight(fonts, 400);
   const boldFontPath = getFontPathByWeight(fonts, 700);
 
@@ -173,13 +173,13 @@ export const GET: APIRoute = async ({ props, url }) => {
       embedFont: true,
       fonts: [
         {
-          name: "Zilla Slab",
+          name: "Aleo",
           data: regularData,
           weight: 400,
           style: "normal",
         },
         {
-          name: "Zilla Slab",
+          name: "Aleo",
           data: boldData,
           weight: 700,
           style: "normal",
