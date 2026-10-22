@@ -17,13 +17,13 @@ The website for a My Little Pony convention in Kansas City, Missouri, covering c
 
 The website for PonyvilleFM, an online radio station for MLP fans that began as BronyRadio in 2010. I designed and developed the site, which launched in autumn 2014. It shows live radio metadata, schedules, team profiles and news, with a custom back-end for the team to post updates.
 
-**Built with:** Laravel 5 (PHP) · [Visit ponyvillefm.com](https://ponyvillefm.com)
+**Built with:** Laravel (PHP) · [Visit ponyvillefm.com](https://ponyvillefm.com)
 
 ## UK of Equestria
 
-An online community formed in December 2011 from the merger of two regional fan groups, now with more than 5,000 registrations. I maintain the site and built an extension that tracks members' attendance at public events.
+An online community formed in December 2011 from the merger of two regional fan groups, now with more than 5,000 registrations. I maintain the site and built an extension that tracks members' attendance at public events. The website is now offline as people gradually moved to platforms such as Discord.
 
-**Built with:** XenForo · [Visit ukofequestria.co.uk](https://ukofequestria.co.uk)
+**Built with:** XenForo
 
 ## Earlier projects
 
