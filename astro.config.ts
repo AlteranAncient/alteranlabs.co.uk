@@ -60,10 +60,10 @@ export default defineConfig({
   },
   fonts: [
     {
-      name: "Google Sans Code",
-      cssVariable: "--font-google-sans-code",
+      name: "Zilla Slab",
+      cssVariable: "--font-zilla-slab",
       provider: fontProviders.google(),
-      fallbacks: ["monospace"],
+      fallbacks: ["serif"],
       weights: [300, 400, 500, 600, 700],
       styles: ["normal", "italic"],
       formats: ["woff", "ttf"],
