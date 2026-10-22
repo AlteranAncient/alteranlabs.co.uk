@@ -11,9 +11,9 @@ I'm a Platform/Infrastructure/Reliability Engineer moving into Engineering Manag
 
 ### Qualifications
 
-* AWS Solutions Architect Associate (SAA-C01) - Expired
-* Certified Kubernetes Application Developer (CKAD) - Expired
-* Zend Certified PHP Engineer
+- AWS Solutions Architect Associate (SAA-C01) - Expired
+- Certified Kubernetes Application Developer (CKAD) - Expired
+- Zend Certified PHP Engineer
 
 ## About "Alteran Labs"
 
